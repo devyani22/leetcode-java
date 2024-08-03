@@ -51,4 +51,8 @@ class MinStack {
  * minStack keeps track of the minimum elements up to the current state of Stack
  * When pushing, if the new element is smaller than the current minimum then it needs to be pushed to minStack.
  * When popping, if the current minimum is popped, then it needs to be popped from both the places.
+ *
+ * Time complexity = O(1) for each operation.
+ * Total Space Complexity=O(n)+O(n)=O(2n)=O(n)
+ * where n is the number of elements in each stack.
  */
