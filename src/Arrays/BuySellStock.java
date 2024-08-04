@@ -7,20 +7,19 @@ public class BuySellStock {
      * @param prices
      * @return maximum profit
      */
-    public int maxProfitBrute(int[] prices) {
+    public static int maxProfitBrute(int[] prices) {
 
-        int max = 0;
+        int maxProfit = 0;
 
         for(int i=0; i<prices.length; i++){
             for(int j=i+1; j<prices.length; j++){
-                if(prices[j]>prices[i]){
-                    int diff = prices[j]-prices[i];
-                    if(diff>max)
-                        max = diff;
+                int profit = prices[j] - prices[i];
+                if (profit > maxProfit) {
+                    maxProfit = profit;
                 }
             }
         }
-        return max;
+        return maxProfit;
     }
 
     /**
