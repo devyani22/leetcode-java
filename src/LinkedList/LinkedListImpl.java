@@ -7,6 +7,7 @@ public class LinkedListImpl {
     LinkedListImpl(Node node) {
         this.node = node;
     }
+    LinkedListImpl(){}
 
     /**
      * Access the element at a specific index
@@ -34,9 +35,6 @@ public class LinkedListImpl {
     public void addAtHead(int val) {
 
         Node newNode = new Node(val);
-        if (node == null) {
-            node = newNode;
-        }
         newNode.next = node;
         node = newNode;
     }
@@ -88,4 +86,21 @@ public class LinkedListImpl {
         //todo
     }
 
+    private void print() {
+
+        while (node!=null){
+            System.out.println(node.data);
+            node = node.next;
+        }
+    }
+
+    public static void main(String[] args) {
+        LinkedListImpl linkedList = new LinkedListImpl();
+        linkedList.addAtHead(4);
+        linkedList.addAtHead(5);
+        linkedList.addAtHead(8);
+
+        linkedList.print();
+
+    }
 }
