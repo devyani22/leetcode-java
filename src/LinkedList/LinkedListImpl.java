@@ -106,9 +106,25 @@ public class LinkedListImpl {
     }
 
     public void deleteAtIndex(int index) {
+        // Check if the index is out of bounds
+        if (index < 0 || index >= length) {
+            System.out.println("Cannot delete at index: Index out of bounds");
+            return;
+        }
+
         if (index == 0) {
             head = head.next;
+        } else {
+            Node current = head;
+            for (int i = 0; i < index-1; i++) { // Traverse to the node just before the one we want to delete
+                current = current.next;
+            }
+            // Now, 'current' is the node before the node to be deleted
+            if (current.next!=null) {
+                current.next = current.next.next;   // Bypass the node to be deleted
+            }
         }
+        length--;   // Decrement the length of the list by 1
     }
 
     private void print() {
@@ -125,11 +141,16 @@ public class LinkedListImpl {
         linkedList.addAtHead(1);
         linkedList.addAtTail(2);
         linkedList.addAtTail(3);
+        linkedList.addAtTail(4);
 
-        //linkedList.print();
+        linkedList.print();  // Output: 1, 2, 3, 4
+        System.out.println();
+        linkedList.deleteAtIndex(2);  // Deletes the element at index 2 (which is '3')
+        linkedList.print();  // Output: 1, 2, 4
 
-        linkedList.insertAt(10,2);
-        linkedList.print();
+        linkedList.deleteAtIndex(0);  // Deletes the element at index 0 (which is '1')
+        linkedList.print();  // Output: 2, 4
 
+        linkedList.deleteAtIndex(5);  // Trying to delete out of bounds (prints an error message)
     }
 }
