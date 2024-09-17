@@ -127,6 +127,20 @@ public class LinkedListImpl {
         length--;   // Decrement the length of the list by 1
     }
 
+    public void reverse() {
+        Node next = null;
+        Node previous = null;
+        Node current = head;
+
+        while(current!=null) {
+            next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
+        }
+        head = previous;
+    }
+
     private void print() {
         Node temp = head;  // Use a temporary variable to traverse the list without modifying the head
 
@@ -152,5 +166,10 @@ public class LinkedListImpl {
         linkedList.print();  // Output: 2, 4
 
         linkedList.deleteAtIndex(5);  // Trying to delete out of bounds (prints an error message)
+
+        linkedList.reverse();  // Reverse the linked list
+
+        System.out.println("Reversed List:");
+        linkedList.print();  // Output: 4, 3, 2, 1
     }
 }
